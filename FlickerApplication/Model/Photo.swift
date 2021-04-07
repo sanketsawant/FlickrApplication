@@ -16,14 +16,3 @@ struct Photo: Codable,Identifiable {
         URL(string: "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret)_m.jpg")
     }
 }
-
-struct Photos: Codable {
-    let page, pages, perpage: Int
-    let total: String
-    let photo: [Photo]
-}
-
-struct SearchResult: Codable {
-    let photos: Photos
-    let stat: String
-}
