@@ -35,6 +35,10 @@ class HomeCollectionViewController: UIViewController,UICollectionViewDelegate {
         self.bindDataModel()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        searchController.searchBar.searchTextField.becomeFirstResponder()
+    }
+    
     //Bind viewModel with controller for data updates
     func bindDataModel() {
         self.noResultView.isHidden = true
