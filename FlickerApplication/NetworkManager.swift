@@ -20,7 +20,7 @@ class NetworkManager {
     private init() {}
     
     func getSearchResults(for searchTerm:String, page:Int, completed: @escaping (Result<Photos, APIError>) -> Void)   {
-        let endPoind = "\(Constants.urlPoint)method=flickr.photos.search&api_key=\(Constants.apiKey)&format=json&nojsoncallback=1&text=\(searchTerm)&page=\(page)&per_page=15"
+        let endPoind = "\(Constants.urlPoint)method=flickr.photos.search&api_key=\(Constants.apiKey)&format=json&nojsoncallback=1&text=\(searchTerm)&page=\(page)&per_page=50"
         AF.request(endPoind).validate().responseDecodable(of: SearchResult.self) { (response) in
             guard response.response?.statusCode == 200 else {
                 completed(.failure(APIError.invalidResponse))
