@@ -17,7 +17,7 @@ Step 2: Enter Flickr API Key and Secret key in Constant.swift file.
 MVVM - Model-View-ViewModel
 
 
-Pending ToDo:
+# Pending ToDo:
 1) Create End Point Enum to build different urls used in App
 2) Increase test coverage
 3) Create details view to show image details.
