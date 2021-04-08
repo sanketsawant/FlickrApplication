@@ -76,8 +76,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mAD-hq-vdo">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mAD-hq-vdo">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="PlZ-Zm-L1a"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -87,9 +90,15 @@
                                                 <constraint firstAttribute="bottom" secondItem="mAD-hq-vdo" secondAttribute="bottom" id="mhT-X2-ihv"/>
                                                 <constraint firstItem="mAD-hq-vdo" firstAttribute="leading" secondItem="gIf-sB-hcJ" secondAttribute="leading" id="vxM-z9-Ylz"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="CaE-o0-13z"/>
+                                                </mask>
+                                            </variation>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="imageView" destination="mAD-hq-vdo" id="nkl-HB-fii"/>
+                                            <outlet property="maxWidthConstraint" destination="PlZ-Zm-L1a" id="EdV-Kv-FIV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -127,6 +136,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Flickr" id="goZ-uz-kDX"/>
                     <connections>
+                        <outlet property="collectionLayout" destination="p5X-7z-Sa9" id="M5g-vB-nSb"/>
                         <outlet property="collectionView" destination="RUC-7d-Svx" id="SYg-FY-8MA"/>
                         <outlet property="noResultView" destination="fBi-hM-rci" id="ImL-HD-ZJC"/>
                         <outlet property="recentSearchTableView" destination="gO7-5L-B2f" id="pAN-Sa-PbE"/>

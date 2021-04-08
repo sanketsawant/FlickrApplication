@@ -26,6 +26,12 @@ class HomeCollectionViewController: UIViewController,UICollectionViewDelegate {
         return image
     }()
     
+    @IBOutlet weak var collectionLayout: UICollectionViewFlowLayout! {
+        didSet {
+            collectionLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
+    
     let viewModal: HomeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
@@ -125,6 +131,7 @@ extension HomeCollectionViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionReuseIdentifier, for: indexPath) as? FlickImageCollectionViewCell else { return UICollectionViewCell() }
         let photo = self.viewModal.photos[indexPath.row]
         cell.configureCell(with: photo, placeholderImage: placeholderImage)
+        cell.maxWidth = collectionView.bounds.width - sectionInsets.left
         return cell
     }
 
@@ -158,24 +165,6 @@ extension HomeCollectionViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         self.showHideCollectionView()
-    }
-}
-
-// MARK: UICollectionViewDelegateFlowLayout to configure layout
-extension HomeCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
-        return CGSize(width: widthPerItem, height: widthPerItem)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInsets
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
     }
 }
 
