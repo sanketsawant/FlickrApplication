@@ -144,6 +144,9 @@ extension HomeCollectionViewController: UISearchBarDelegate {
         self.onSearch(with: nil)
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.onSearch(with: searchText)
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.searchTextField.resignFirstResponder()
         self.onSearch(with: searchBar.searchTextField.text)
